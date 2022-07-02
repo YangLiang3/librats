@@ -72,7 +72,7 @@ typedef struct rats_evidence {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern rats_err_t librats_init(rats_conf_t *conf, rats_core_context_t *ctx);
+extern rats_attester_err_t librats_collect_evidence(attestation_evidence_t *evidence, uint8_t *hash);
 #ifdef __cplusplus
 }
 #endif
@@ -80,27 +80,7 @@ extern rats_err_t librats_init(rats_conf_t *conf, rats_core_context_t *ctx);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern rats_err_t librats_cleanup(rats_core_context_t *ctx);
-#ifdef __cplusplus
-}
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern rats_attester_err_t librats_collect_evidence(rats_attester_ctx_t *ctx,
-						    attestation_evidence_t *evidence, uint8_t *hash,
-						    uint32_t hash_len);
-#ifdef __cplusplus
-}
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern rats_verifier_err_t librats_verify_evidence(rats_verifier_ctx_t *ctx,
-						   attestation_evidence_t *evidence, uint8_t *hash,
-						   uint32_t hash_len);
+extern rats_verifier_err_t librats_verify_evidence(attestation_evidence_t *evidence, uint8_t *hash);
 #ifdef __cplusplus
 }
 #endif

@@ -24,6 +24,14 @@
 #include "quote_verification.h"
 #include "dcap_quote.h"
 #else
+/* Work around the following issue:
+ * In file included from src/verifiers/sgx-ecdsa/verify_evidence.c:27:0:
+ * /usr/include/sgx_dcap_quoteverify.h:206:11: error: unknown type name ‘tdx_ql_qve_collateral_t’
+ * const tdx_ql_qve_collateral_t *p_quote_collateral,
+ */
+#ifndef tdx_ql_qve_collateral_t
+typedef sgx_ql_qve_collateral_t tdx_ql_qve_collateral_t;
+#endif
 #include <sgx_dcap_quoteverify.h>
 #include <sgx_dcap_ql_wrapper.h>
 // clang-format on
